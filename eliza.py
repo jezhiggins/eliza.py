@@ -4,7 +4,7 @@
 #  a cheezy little Eliza knock-off by Joe Strout <joe@strout.net>
 #  with some updates by Jeff Epler <jepler@inetnebr.com>
 #  hacked into a module and updated by Jez Higgins <jez@jezuk.co.uk>
-#  last revised: 6 March 2002
+#  last revised: 28 February 2005
 #----------------------------------------------------------------------
 
 import string
@@ -13,7 +13,7 @@ import whrandom
 
 class eliza:
   def __init__(self):
-    self.keys = map(lambda x:re.compile(x[0]),gPats)
+    self.keys = map(lambda x:re.compile(x[0], re.IGNORECASE),gPats)
     self.values = map(lambda x:x[1],gPats)
 
   #----------------------------------------------------------------------
@@ -87,18 +87,18 @@ gPats = [
     "Would it really help you to get %1?",
     "Are you sure you need %1?"]],
   
-  [r'Why don\'t you (.*)',
+  [r'Why don\'?t you ([^\?]*)\??',
   [  "Do you really think I don't %1?",
     "Perhaps eventually I will %1.",
     "Do you really want me to %1?"]],
   
-  [r'Why can\'t I (.*)',
+  [r'Why can\'?t I ([^\?]*)\??',
   [  "Do you think you should be able to %1?",
     "If you could %1, what would you do?",
     "I don't know -- why can't you %1?",
     "Have you really tried?"]],
   
-  [r'I can\'t (.*)',
+  [r'I can\'?t (.*)',
   [  "How do you know you can't %1?",
     "Perhaps you could %1 if you tried.",
     "What would it take for you to %1?"]],
@@ -108,13 +108,13 @@ gPats = [
     "How long have you been %1?",
     "How do you feel about being %1?"]],
   
-  [r'I\'m (.*)',
+  [r'I\'?m (.*)',
   [  "How does being %1 make you feel?",
     "Do you enjoy being %1?",
     "Why do you tell me you're %1?",
     "Why do you think you're %1?"]],
   
-  [r'Are you (.*)',
+  [r'Are you ([^\?]*)\??',
   [  "Why does it matter whether I am %1?",
     "Would you prefer it if I were not %1?",
     "Perhaps you believe I am %1.",
@@ -175,12 +175,12 @@ gPats = [
   [  "You seem very certain.",
     "If I told you that it probably isn't %1, what would you feel?"]],
   
-  [r'Can you (.*)',
+  [r'Can you ([^\?]*)\??',
   [  "What makes you think I can't %1?",
     "If I could %1, then what?",
     "Why do you ask if I can %1?"]],
   
-  [r'Can I (.*)',
+  [r'Can I ([^\?]*)\??',
   [  "Perhaps you don't want to %1.",
     "Do you want to be able to %1?",
     "If you could %1, would you?"]],
@@ -191,12 +191,12 @@ gPats = [
     "Perhaps you would like me to be %1.",
     "Perhaps you're really talking about yourself?"]],
   
-  [r'You\'re (.*)',
+  [r'You\'?re (.*)',
   [  "Why do you say I am %1?",
     "Why do you think I am %1?",
     "Are we talking about you, or me?"]],
   
-  [r'I don\'t (.*)',
+  [r'I don\'?t (.*)',
   [  "Don't you really %1?",
     "Why don't you %1?",
     "Do you want to %1?"]],

@@ -16,7 +16,7 @@ except:
     sys.exit(1)
     
 setup(name="eliza.py",
-      version="0.1",
+      version="0.2",
       py_modules=["eliza"],
       description="Cheesy Eliza knock-off  ",
       author="Joe Strout, Jeff Epler and Jez Higgins",
