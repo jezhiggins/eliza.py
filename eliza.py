@@ -4,7 +4,6 @@
 #  a cheezy little Eliza knock-off by Joe Strout <joe@strout.net>
 #  with some updates by Jeff Epler <jepler@inetnebr.com>
 #  hacked into a module and updated by Jez Higgins <jez@jezuk.co.uk>
-#  last revised: 28 February 2005
 #----------------------------------------------------------------------
 
 import string
