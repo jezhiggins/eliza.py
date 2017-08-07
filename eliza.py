@@ -1,9 +1,9 @@
 #----------------------------------------------------------------------
 #  eliza.py
 #
-#  a cheezy little Eliza knock-off by Joe Strout <joe@strout.net>
-#  with some updates by Jeff Epler <jepler@inetnebr.com>
-#  hacked into a module and updated by Jez Higgins <jez@jezuk.co.uk>
+#  a cheezy little Eliza knock-off by Joe Strout
+#  with some updates by Jeff Epler
+#  hacked into a module and updated by Jez Higgins
 #----------------------------------------------------------------------
 
 import string
