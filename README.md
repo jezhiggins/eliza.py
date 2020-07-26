@@ -11,7 +11,7 @@ and `python eliza.py`.  To use the it from with in your own script do something 
 ``` python
 import eliza
 
-therapist = eliza.eliza()
+therapist = eliza.Eliza()
 while some_condition:
   #get input from somewhere
   reply = therapist.respond(input)
@@ -25,6 +25,6 @@ J. Weizenbaum, [ELIZA - A Computer Program For the Study of Natural Language Com
 
 Original code written by Joe Strout, with some updates by Jeff Epler.  Converted to a module and updated for Python 3 by Jez Higgins.
 
-Copyright (c) 2002-2017 [JezUK Ltd](http://www.jezuk.co.uk), Joe Strout, Jeff Epler
+Copyright (c) 2002-2020 [JezUK Ltd](http://www.jezuk.co.uk), Joe Strout, Jeff Epler
 
 Licensed under the terms of the MIT License.

@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 #----------------------------------------------------------------------
 #  eliza.py
 #
@@ -10,21 +13,21 @@ import string
 import re
 import random
 
-class eliza:
+class Eliza:
   def __init__(self):
-    self.keys = list(map(lambda x:re.compile(x[0], re.IGNORECASE),gPats))
-    self.values = list(map(lambda x:x[1],gPats))
+    self.keys = list(map(lambda x: re.compile(x[0], re.IGNORECASE), gPats))
+    self.values = list(map(lambda x: x[1], gPats))
 
   #----------------------------------------------------------------------
-  # translate: take a string, replace any words found in dict.keys()
-  #  with the corresponding dict.values()
+  # translate: take a string, replace any words found in vocabulary.keys()
+  #  with the corresponding vocabulary.values()
   #----------------------------------------------------------------------
-  def translate(self,str,dict):
-    words = str.lower().split()
-    keys = dict.keys();
-    for i in range(0,len(words)):
+  def translate(self, text, vocabulary):
+    words = text.lower().split()
+    keys = vocabulary.keys();
+    for i in range(0, len(words)):
       if words[i] in keys:
-        words[i] = dict[words[i]]
+        words[i] = vocabulary[words[i]]
     return ' '.join(words)
 
   #----------------------------------------------------------------------
@@ -32,10 +35,10 @@ class eliza:
   #    set of response lists; find a match, and return a randomly
   #    chosen response from the corresponding list.
   #----------------------------------------------------------------------
-  def respond(self,str):
+  def respond(self, text):
     # find a match among keys
     for i in range(0, len(self.keys)):
-      match = self.keys[i].match(str)
+      match = self.keys[i].match(text)
       if match:
         # found a match ... stuff with corresponding value
         # chosen randomly from among the available options
@@ -45,13 +48,14 @@ class eliza:
         while pos > -1:
           num = int(resp[pos+1:pos+2])
           resp = resp[:pos] + \
-            self.translate(match.group(num),gReflections) + \
+            self.translate(match.group(num), gReflections) + \
             resp[pos+2:]
           pos = resp.find('%')
         # fix munged punctuation at the end
         if resp[-2:] == '?.': resp = resp[:-2] + '.'
         if resp[-2:] == '??': resp = resp[:-2] + '?'
         return resp
+    return None
 
 #----------------------------------------------------------------------
 # gReflections, a translation table used to convert things you say
@@ -297,7 +301,7 @@ def command_interface():
   print('Hello.  How are you feeling today?')
 
   s = ''
-  therapist = eliza();
+  therapist = Eliza();
   while s != 'quit':
     try:
       s = input('> ')
